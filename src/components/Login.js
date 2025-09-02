@@ -1,28 +1,57 @@
 import Header from "./Header";
 import { BG_URL } from "../utils/constants";
-import { useState , useRef } from "react";
+import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
-  const [errMessage,setErrorMessage] = useState(null);
+  const [errMessage, setErrorMessage] = useState(null);
 
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
- const handleButtonClick = () =>{
-   // Get values safely
-  const enteredName = !isSignInForm && name.current ? name.current.value : null;
-  const enteredEmail = email.current ? email.current.value : "";
-  const enteredPassword = password.current ? password.current.value : "";
+  const handleButtonClick = () => {
+    // Get values safely
+    const enteredName =
+      !isSignInForm && name.current ? name.current.value : null;
+    const enteredEmail = email.current ? email.current.value : "";
+    const enteredPassword = password.current ? password.current.value : "";
 
-  // Validate the form data
-  const message = checkValidData(enteredName, enteredEmail, enteredPassword);
-  setErrorMessage(message);
+    // Validate the form data
+    const message = checkValidData(enteredName, enteredEmail, enteredPassword);
+    setErrorMessage(message);
+    if (message) return;
 
-   // sign in / sign up
- }
+    // sign in / sign up
+    if (!isSignInForm) {
+      // Sign Up Logic
+      createUserWithEmailAndPassword(auth, enteredEmail, enteredPassword)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      // Sign In Logic
+      signInWithEmailAndPassword(auth,enteredEmail ,enteredPassword )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user)
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode+ " "+errorMessage);
+        });
+    }
+  };
 
   const toggleSignIn = () => {
     setIsSignInForm(!isSignInForm);
@@ -46,7 +75,10 @@ const Login = () => {
 
       {/* Form */}
       <div className="flex items-center justify-center h-full">
-        <form onSubmit={(e) => e.preventDefault()} className="w-96 p-10 bg-black rounded-xl shadow-lg backdrop-blur text-white bg-opacity-40">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="w-96 p-10 bg-black rounded-xl shadow-lg backdrop-blur text-white bg-opacity-40"
+        >
           <h1 className="font-bold text-3xl mb-6 text-center">
             {isSignInForm ? "Sign In" : "Sign Up"}
           </h1>
@@ -75,7 +107,10 @@ const Login = () => {
             className="p-3 mb-6 w-full bg-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
           />
           <p className="text-red-500 font-bold text-lg py-2 ">{errMessage}</p>
-          <button className="p-3 mb-6 bg-red-600 hover:bg-red-900 w-full rounded-md font-semibold transition" onClick={handleButtonClick}>
+          <button
+            className="p-3 mb-6 bg-red-600 hover:bg-red-900 w-full rounded-md font-semibold transition"
+            onClick={handleButtonClick}
+          >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
 
