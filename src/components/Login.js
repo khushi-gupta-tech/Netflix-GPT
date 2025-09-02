@@ -1,29 +1,94 @@
 import Header from "./Header";
 import { BG_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState , useRef } from "react";
+import { checkValidData } from "../utils/validate";
 
 const Login = () => {
- 
-  const [isSignInForm,setIsSignInForm] = useState(true);
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errMessage,setErrorMessage] = useState(null);
 
-  const toggleSignIn = () =>{
-     setIsSignInForm(!isSignInForm);
-  }
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+ const handleButtonClick = () =>{
+   // Get values safely
+  const enteredName = !isSignInForm && name.current ? name.current.value : null;
+  const enteredEmail = email.current ? email.current.value : "";
+  const enteredPassword = password.current ? password.current.value : "";
+
+  // Validate the form data
+  const message = checkValidData(enteredName, enteredEmail, enteredPassword);
+  setErrorMessage(message);
+
+   // sign in / sign up
+ }
+
+  const toggleSignIn = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+
   return (
-    <div>
+    <div className="relative w-full h-screen">
+      {/* Header */}
       <Header />
-      <div className="absolute">
-        <img src={BG_URL} alt="background" />
+
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={BG_URL}
+          alt="background"
+          className="w-full h-full object-cover"
+        />
+        {/* Gray overlay */}
+        <div className="absolute inset-0 bg-gray-950 bg-opacity-70"></div>
       </div>
-      <form className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
-        <h1 className="font-bold text-3xl py-4">{ isSignInForm ? "Sign In" : "Sign Up"}</h1>
-        {!isSignInForm  && <input type="text" placeholder="Full Name" className="p-4 my-4 w-full bg-gray-700" />}
-        <input type="text" placeholder="Email Address" className="p-4 my-4 w-full bg-gray-700" />
-        <input type="password" placeholder="Password" className="p-4 my-4 w-full bg-gray-700" />
-        <button className="p-4 my-6 bg-red-700 w-full rounded-lg">{ isSignInForm ? "Sign In" : "Sign Up"}</button>
-        <p className="py-4 cursor-pointer" onClick={toggleSignIn}>
-          { isSignInForm ? "New to Netflix?Sign Up Now" : "Already registered? Sign In Now"}</p>
-      </form>
+
+      {/* Form */}
+      <div className="flex items-center justify-center h-full">
+        <form onSubmit={(e) => e.preventDefault()} className="w-96 p-10 bg-black rounded-xl shadow-lg backdrop-blur text-white bg-opacity-40">
+          <h1 className="font-bold text-3xl mb-6 text-center">
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </h1>
+
+          {/* Full Name only for Sign Up */}
+          {!isSignInForm && (
+            <input
+              ref={name}
+              type="text"
+              placeholder="Full Name"
+              className="p-3 mb-4 w-full bg-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          )}
+
+          <input
+            ref={email}
+            type="email"
+            placeholder="Email Address"
+            className="p-3 mb-4 w-full bg-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+
+          <input
+            ref={password}
+            type="password"
+            placeholder="Password"
+            className="p-3 mb-6 w-full bg-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+          <p className="text-red-500 font-bold text-lg py-2 ">{errMessage}</p>
+          <button className="p-3 mb-6 bg-red-600 hover:bg-red-900 w-full rounded-md font-semibold transition" onClick={handleButtonClick}>
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </button>
+
+          <p
+            className="text-sm text-gray-300 hover:text-white text-center cursor-pointer"
+            onClick={toggleSignIn}
+          >
+            {isSignInForm
+              ? "New to Netflix? Sign Up Now"
+              : "Already registered? Sign In Now"}
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
