@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { BG_URL } from "../utils/constants";
+import { BG_URL, USER_AVATAR } from "../utils/constants";
 import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
 import {
@@ -41,7 +41,7 @@ const Login = () => {
           // update a user profile api
           updateProfile(user, {
             displayName: enteredName,
-            photoURL: "https://avatars.githubusercontent.com/u/179340254?v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
