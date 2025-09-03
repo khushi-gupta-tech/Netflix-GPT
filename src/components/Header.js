@@ -43,6 +43,7 @@ const Header = () => {
       }
     });
 
+    // UNSUBSCRIBE  when component unmounts
     return () => unsubscribe(); // cleanup
   }, [dispatch,navigate]);
 
