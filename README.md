@@ -31,11 +31,12 @@
 
 - Browse page (after authentication)
   - header
-  - main movie
+  - main movie container
      - trailer in background
      - title & description
-     - moviesSuggestions
-       - movielists *N
+  - Secondary Container
+     - movielists *N
+       - cards * n
 - netflixGPT 
   - search bar
   - movie Suggestion
