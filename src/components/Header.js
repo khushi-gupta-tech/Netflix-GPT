@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANG } from "../utils/constants";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
@@ -58,6 +58,9 @@ const Header = () => {
       <img className="w-40" src={LOGO} alt="logo" />
       {user && (
         <div className="flex p-2 items-center">
+          <select className="p-2 m-2 bg-gray-900 text-white">
+            {SUPPORTED_LANG.map((lang) =><option key={lang.identifier} vlaue={lang.identifier}>{lang.name}</option> )}
+          </select>
           <button className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
           onClick={handleGptSearch}>GPT Search</button>
           <img className="w-10 h-10 mr-2" src={user?.photoURL} alt="userIcon" />
