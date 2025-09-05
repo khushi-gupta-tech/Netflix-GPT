@@ -39,7 +39,7 @@
 - GPT Search Feature 
 - GPT Search Bar
 - Multi-Language Feature in our App
--Integrate  GPT APIS(Open AI)
+- Integrate  GPT APIS(Open AI)
 
 # Features
 - Login/sign up page
