@@ -6,6 +6,7 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRated from "../hooks/useTopRated";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import useComedyMovies from "../hooks/useComedyMovies";
+import GptSearch from "./GptSearch";
 
 const Browse = () => {
    
@@ -17,6 +18,7 @@ const Browse = () => {
   return (
     <div>
       <Header />
+      <GptSearch/>
       <MainContainer/>
       <SecondaryContainer/>
     </div>

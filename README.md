@@ -36,7 +36,7 @@
 - TMDB Inage CDN URL
 - made the browse page amazing with tailwind CSS
 - usePopularMovies Custom hook
-
+- GPT Search Feature 
 # Features
 - Login/sign up page
   - sign in / sign up form
