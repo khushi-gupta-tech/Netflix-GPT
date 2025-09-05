@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { removeGptMovies, toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 const Header = () => {
   const navigate = useNavigate();
@@ -52,6 +52,7 @@ const Header = () => {
   const handleGptSearch = () => {
     // Toggle GPT Search
     dispatch(toggleGptSearchView());
+    dispatch(removeGptMovies())
   };
 
   const handleLangChange = (e) => {
