@@ -8,6 +8,7 @@ const GptSearchBar = () => {
   const langKey = useSelector((Store) => Store.config.lang || "en");
   const searchText = useRef(null);
   const dispatch = useDispatch();
+  
   //   const handleGptSearchClick = async () => {
 
   //     // make an API call to GPT API and get Movie results
