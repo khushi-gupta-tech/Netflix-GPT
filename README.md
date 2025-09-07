@@ -1,72 +1,67 @@
-🎬 Netflix GPT
+# 🎬 Netflix GPT
 
 Netflix GPT is a responsive React web app for exploring movies in a Netflix-style interface. It integrates TMDB API for movie data and OpenAI GPT API for AI-powered movie suggestions.
 
-🚀 Features
+---
 
-  ✅ Firebase authentication (login, sign-up, profile update)
- 
-  ✅ Browse page with movie trailer, title, description, and lists
+## 🚀 Features
+- ✅ Authentication – Login, Sign-up, and profile update with Firebase  
+- 🎬 Browse Page – Movie trailers, titles, descriptions, and movie lists  
+- 🔍 GPT Search – AI-powered movie suggestions  
+- 📱 Responsive Design – Works across devices using TailwindCSS  
+- ⚡ State Management – Redux slices for user, movies, and GPT suggestions  
 
-  ✅ AI-powered GPT search for movie suggestions
+---
 
-  ✅ Responsive design with TailwindCSS
+## 🛠️ Tech Stack
+- **Frontend:** React.js, Tailwind CSS  
+- **State Management:** Redux (`userSlice`, `movieSlice`, `gptSlice`)  
+- **Backend & Auth:** Firebase Authentication  
+- **APIs:** TMDB, OpenAI GPT  
+- **Deployment:** Production-ready React app  
 
-  ✅ Redux for state management
-   
+---
 
+## ⚙️ Installation & Setup
 
-🛠 Tech Stack
+1. **Clone the repository**  
 
-  🖥 Frontend: React, TailwindCSS
+git clone https://github.com/yourusername/netflix-gpt.git
+cd netflix-gpt
 
-  ⚙️ State Management: Redux (userSlice, movieSlice, gptSlice)
+2. Install dependencies
 
-  🔒 Backend & Auth: Firebase Authentication
-
-  🌐 APIs: TMDB, OpenAI GPT
-
-  🚀 Deployment: Production-ready React app
-
-
-
-⚙️ Setup Instructions
-
-  📥 Clone the repository
-
-  git clone https://github.com/yourusername/netflix-gpt.git
-  cd netflix-gpt
+npm install
 
 
-  📦 Install dependencies
+3. Start the development server
 
-   npm install
-
-
-  🔑 Add Environment Variables
-
-   Create .env in root directory
-
-   Add API keys:
-
-  REACT_APP_TMDB_API_KEY=your_tmdb_api_key
-  REACT_APP_OPENAI_API_KEY=your_openai_api_key
+ npm start
 
 
-  ▶️ Run the app
+4. Build for production
 
-  npm start
+npm run build
 
+🔑 API Setup
 
-  📦 Build for production
+1. TMDB API
 
-  npm run build
+   . Register on TMDB  and create an app
+   . Get your API Key
 
+2. OpenAI GPT API
+
+  . Get your API key from OpenAI
+
+3. Add environment variables
+
+  . Create a .env file in the root folder and add:
+
+   REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+
+   REACT_APP_OPENAI_API_KEY=your_openai_api_key
 
 🤝 Contributing
 
-  🍴 Fork the repository
-
-  📤 Submit pull requests
-  
- 💡 Contributions are welcome!
+Contributions are welcome! Feel free to fork this repo and submit pull requests.
