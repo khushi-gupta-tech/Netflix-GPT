@@ -1,67 +1,118 @@
-# Netflix GPT
+🎬 Netflix GPT
 
-- create React App
-- Configured Tailwindcss
-- Header 
-- routing of app
-- Login Form 
-- Sign Up Form 
-- Form Validation
-- useRef Hook
-- Firebase setup
-- Deploying our app to production
-- create sign up user account
-- Implement sign in user api
-- create redux store with userSlice
-- Implement sign out 
-- update profile
-- BugFix : Sign Up user displayName and profile picture update
-- BugFix : if the user is not logged in redirect / browse to login Page and vice-versa
-- unsubscribe to the onAuthStateChanged callback
-- Add hardcoded values to the constants file
-- Fetch Movies from TMDB 
-- register TMDB API & create an app  & get access token
-- get data from tmdb now playing movies list api
-- create custom hook for now playing movies
-- create movieSlice
-- update store with movies data
-- planning for MainContainer & secondary container
-- fetch data for trailer video
-- update store with trailer video data
-- embedded the youtube video and make it autoplay and mute
-- tailwind classes to make main container look awesome
-- Build Secondary Component
-- Build Movie List
-- build Movie card
-- TMDB Inage CDN URL
-- made the browse page amazing with tailwind CSS
-- usePopularMovies Custom hook
-- GPT Search Feature 
-- GPT Search Bar
-- Multi-Language Feature in our App
-- Integrate  GPT APIS(Open AI)
-- GPT Search API call
-- fetched gptMoviesSuggestion from TMDB 
-- create gptSlice added data
-- Reused Movie List component to make suggestion container
-- memoization
-- Added .env file
-- Adding .env file to gitignore
-- Made our site responsive
+Netflix GPT is a modern, responsive movie web app built with React, TailwindCSS, and Firebase. It leverages TMDB API for movie data and OpenAI GPT API for AI-powered movie suggestions. Perfect for discovering and exploring movies in a Netflix-style interface.
 
-# Features
-- Login/sign up page
-  - sign in / sign up form
-  - redirect to browse page
+🚀 Features
+Authentication
 
-- Browse page (after authentication)
-  - header
-  - main movie container
-     - trailer in background
-     - title & description
-  - Secondary Container
-     - movielists *N
-       - cards * n
-- netflixGPT 
-  - search bar
-  - movie Suggestion
+Login / Sign Up
+
+Form validation and Firebase authentication
+
+Create, sign in, and sign out users
+
+Update user profile (display name & profile picture)
+
+Redirect based on login status
+
+Browse Page (After Login)
+
+Header with navigation
+
+Main Movie Container
+
+Background trailer (autoplay & muted)
+
+Movie title & description
+
+Secondary Container
+
+Multiple movie lists
+
+Movie cards with TMDB images
+
+Fully responsive design using TailwindCSS
+
+Netflix GPT
+
+Search bar powered by OpenAI GPT API
+
+Fetch GPT-based movie suggestions from TMDB
+
+Multi-language support
+
+Reusable components and memoization for optimized performance
+
+🛠 Tech Stack
+
+Frontend: React, TailwindCSS
+
+State Management: Redux (userSlice, movieSlice, gptSlice)
+
+Backend & Auth: Firebase (Authentication)
+
+APIs: TMDB API, OpenAI GPT API
+
+Deployment: Production-ready React app
+
+⚡ Key Implementations
+
+Routing with React Router
+
+Custom hooks for fetching movies (useNowPlayingMovies, usePopularMovies)
+
+Firebase authentication with onAuthStateChanged subscription handling
+
+GPT API integration for smart movie suggestions
+
+Redux store for managing user, movie, and GPT state
+
+Responsive UI with TailwindCSS
+
+Environment variables for API keys (.env)
+
+🐞 Bug Fixes & Optimizations
+
+Fixed display name & profile picture update after sign up
+
+Proper redirect for logged-in/logged-out users
+
+Unsubscribed onAuthStateChanged to prevent memory leaks
+
+Memoized components for performance optimization
+
+⚙️ Setup Instructions
+
+Clone the repository
+
+git clone https://github.com/yourusername/netflix-gpt.git
+cd netflix-gpt
+
+
+Install dependencies
+
+npm install
+
+
+Add Environment Variables
+
+Create a .env file in the root directory
+
+Add your TMDB and OpenAI API keys:
+
+REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+REACT_APP_OPENAI_API_KEY=your_openai_api_key
+
+
+Start the app
+
+npm start
+
+
+Build for production
+
+npm run build
+
+🤝 Contributing
+
+Contributions are welcome! Fork the repo and submit a pull request.
