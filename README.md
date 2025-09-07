@@ -3,119 +3,70 @@
 Netflix GPT is a responsive React web app for exploring movies in a Netflix-style interface. It integrates TMDB API for movie data and OpenAI GPT API for AI-powered movie suggestions.
 
 🚀 Features
-🔐 Authentication
 
-📝 Firebase login and sign-up
+  ✅ Firebase authentication (login, sign-up, profile update)
+ 
+  ✅ Browse page with movie trailer, title, description, and lists
 
-👤 Create and sign in users
+  ✅ AI-powered GPT search for movie suggestions
 
-🖼 Update user profile (display name & profile picture)
+  ✅ Responsive design with TailwindCSS
 
-🔄 Redirect based on login status
+  ✅ Redux for state management
+   
 
-🎥 Browse Page
-
-🏠 Header with navigation
-
-🎬 Main movie container
-
-🎞 Background trailer (autoplay & muted)
-
-🏷 Movie title & description
-
-📂 Secondary container with multiple movie lists
-
-🖼 Movie cards with TMDB images
-
-📱 Fully responsive using TailwindCSS
-
-🤖 Netflix GPT
-
-🔎 AI-powered search bar
-
-🎯 Movie suggestions fetched from TMDB
-
-🌐 Multi-language support
-
-⚡ Reusable and memoized components for performance
 
 🛠 Tech Stack
 
-🖥 Frontend: React, TailwindCSS
+  🖥 Frontend: React, TailwindCSS
 
-⚙️ State Management: Redux (userSlice, movieSlice, gptSlice)
+  ⚙️ State Management: Redux (userSlice, movieSlice, gptSlice)
 
-🔒 Backend & Auth: Firebase Authentication
+  🔒 Backend & Auth: Firebase Authentication
 
-🌐 APIs: TMDB, OpenAI GPT
+  🌐 APIs: TMDB, OpenAI GPT
 
-🚀 Deployment: Production-ready React app
+  🚀 Deployment: Production-ready React app
 
-⚡ Key Implementations
 
-🗺 Routing with React Router
-
-🛠 Custom hooks for fetching movies:
-
-useNowPlayingMovies
-
-usePopularMovies
-
-🔔 Firebase auth with onAuthStateChanged handling
-
-🗃 Redux store for user, movies, and GPT data
-
-🎨 TailwindCSS for responsive UI
-
-🔑 Environment variables for API keys (.env)
-
-🐞 Bug Fixes & Optimizations
-
-✅ Fixed display name & profile picture update after sign up
-
-🔄 Proper redirects for logged-in/logged-out users
-
-🧹 Unsubscribed onAuthStateChanged to prevent memory leaks
-
-⚡ Memoized components for better performance
 
 ⚙️ Setup Instructions
 
-📥 Clone the repository
+  📥 Clone the repository
 
-git clone https://github.com/yourusername/netflix-gpt.git
-cd netflix-gpt
-
-
-📦 Install dependencies
-
-npm install
+  git clone https://github.com/yourusername/netflix-gpt.git
+  cd netflix-gpt
 
 
-🔑 Add Environment Variables
+  📦 Install dependencies
 
-Create .env in root directory
-
-Add API keys:
-
-REACT_APP_TMDB_API_KEY=your_tmdb_api_key
-REACT_APP_OPENAI_API_KEY=your_openai_api_key
+   npm install
 
 
-▶️ Run the app
+  🔑 Add Environment Variables
 
-npm start
+   Create .env in root directory
+
+   Add API keys:
+
+  REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+  REACT_APP_OPENAI_API_KEY=your_openai_api_key
 
 
-📦 Build for production
+  ▶️ Run the app
 
-npm run build
+  npm start
+
+
+  📦 Build for production
+
+  npm run build
 
 
 🤝 Contributing
 
-🍴 Fork the repository
+  🍴 Fork the repository
 
-📤 Submit pull requests
-
-💡 Contributions are welcome!
+  📤 Submit pull requests
+  
+ 💡 Contributions are welcome!
