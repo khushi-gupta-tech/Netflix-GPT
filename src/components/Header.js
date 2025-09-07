@@ -52,7 +52,7 @@ const Header = () => {
   const handleGptSearch = () => {
     // Toggle GPT Search
     dispatch(toggleGptSearchView());
-    dispatch(removeGptMovies())
+    dispatch(removeGptMovies());
   };
 
   const handleLangChange = (e) => {
@@ -60,7 +60,8 @@ const Header = () => {
   };
   return (
     <div className="absolute w-full  px-7 py-1  bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
-      <img className="w-40 mx-auto md:mx-0" src={LOGO} alt="logo" />
+      <img className="w-40 m-auto md:m-0" src={LOGO} alt="logo" />
+
       {user && (
         <div className="flex p-2 justify-between items-center">
           {showGpt && (
@@ -77,12 +78,16 @@ const Header = () => {
           )}
 
           <button
-            className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+            className=" py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearch}
           >
-           {showGpt ?"HomePage": "GPT Search" }
+            {showGpt ? "HomePage" : "GPT Search"}
           </button>
-          <img className="hidden md:block w-10 h-10 mr-2" src={user?.photoURL} alt="userIcon" />
+          <img
+            className="hidden md:block w-10 h-10 mr-2"
+            src={user?.photoURL}
+            alt="userIcon"
+          />
           <button
             onClick={handleSignOut}
             className="font-bold text-black bg-white rounded-lg p-2 hover:bg-gray-300"
