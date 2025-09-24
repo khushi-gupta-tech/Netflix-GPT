@@ -1,67 +1,67 @@
-# Netflix GPT
+# 🎬 Netflix GPT
 
-- create React App
-- Configured Tailwindcss
-- Header 
-- routing of app
-- Login Form 
-- Sign Up Form 
-- Form Validation
-- useRef Hook
-- Firebase setup
-- Deploying our app to production
-- create sign up user account
-- Implement sign in user api
-- create redux store with userSlice
-- Implement sign out 
-- update profile
-- BugFix : Sign Up user displayName and profile picture update
-- BugFix : if the user is not logged in redirect / browse to login Page and vice-versa
-- unsubscribe to the onAuthStateChanged callback
-- Add hardcoded values to the constants file
-- Fetch Movies from TMDB 
-- register TMDB API & create an app  & get access token
-- get data from tmdb now playing movies list api
-- create custom hook for now playing movies
-- create movieSlice
-- update store with movies data
-- planning for MainContainer & secondary container
-- fetch data for trailer video
-- update store with trailer video data
-- embedded the youtube video and make it autoplay and mute
-- tailwind classes to make main container look awesome
-- Build Secondary Component
-- Build Movie List
-- build Movie card
-- TMDB Inage CDN URL
-- made the browse page amazing with tailwind CSS
-- usePopularMovies Custom hook
-- GPT Search Feature 
-- GPT Search Bar
-- Multi-Language Feature in our App
-- Integrate  GPT APIS(Open AI)
-- GPT Search API call
-- fetched gptMoviesSuggestion from TMDB 
-- create gptSlice added data
-- Reused Movie List component to make suggestion container
-- memoization
-- Added .env file
-- Adding .env file to gitignore
-- Made our site responsive
+Netflix GPT is a responsive React web app for exploring movies in a Netflix-style interface. It integrates TMDB API for movie data and OpenAI GPT API for AI-powered movie suggestions.
 
-# Features
-- Login/sign up page
-  - sign in / sign up form
-  - redirect to browse page
+---
 
-- Browse page (after authentication)
-  - header
-  - main movie container
-     - trailer in background
-     - title & description
-  - Secondary Container
-     - movielists *N
-       - cards * n
-- netflixGPT 
-  - search bar
-  - movie Suggestion
+## 🚀 Features
+- ✅ Authentication – Login, Sign-up, and profile update with Firebase  
+- 🎬 Browse Page – Movie trailers, titles, descriptions, and movie lists  
+- 🔍 GPT Search – AI-powered movie suggestions  
+- 📱 Responsive Design – Works across devices using TailwindCSS  
+- ⚡ State Management – Redux slices for user, movies, and GPT suggestions  
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React.js, Tailwind CSS  
+- **State Management:** Redux (`userSlice`, `movieSlice`, `gptSlice`)  
+- **Backend & Auth:** Firebase Authentication  
+- **APIs:** TMDB, OpenAI GPT  
+- **Deployment:** Production-ready React app  
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**  
+
+git clone https://github.com/yourusername/netflix-gpt.git
+cd netflix-gpt
+
+2. Install dependencies
+
+npm install
+
+
+3. Start the development server
+
+ npm start
+
+
+4. Build for production
+
+npm run build
+
+🔑 API Setup
+
+1. TMDB API
+
+   . Register on TMDB  and create an app
+   . Get your API Key
+
+2. OpenAI GPT API
+
+  . Get your API key from OpenAI
+
+3. Add environment variables
+
+  . Create a .env file in the root folder and add:
+
+   REACT_APP_TMDB_API_KEY=your_tmdb_api_key
+
+   REACT_APP_OPENAI_API_KEY=your_openai_api_key
+
+🤝 Contributing
+
+Contributions are welcome! Feel free to fork this repo and submit pull requests.
