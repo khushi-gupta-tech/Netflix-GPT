@@ -1,53 +1,61 @@
-import  {  useRef } from "react";
+import { useRef } from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addGptMovieResult } from "../utils/gptSlice";
+import { GoogleGenAI } from "@google/genai";
+
 const GptSearchBar = () => {
   const langKey = useSelector((Store) => Store.config.lang || "en");
   const searchText = useRef(null);
   const dispatch = useDispatch();
+
+  const handleGptSearchClick = async () => {
+
+    // make an API call to GPT API and get Movie results
+    const gptQuery =
+      "Act as a Movie Recommendation system and suggest some movies for the query:" +
+      searchText.current.value +
+      " only give me names of 5 movies, comma separated like the example result ahead. Example Result: Gadar,Sholay,Don,Golmaal,Koi Mil Gaya";
+
+    const ai = new GoogleGenAI({ apiKey: process.env.REACT_APP_GEMINI_KEY });
+
+    const gptResults = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: gptQuery,
+    });
+   // console.log(gptResults.text);
   
-  //   const handleGptSearchClick = async () => {
 
-  //     // make an API call to GPT API and get Movie results
-  //     const gptQuery =
-  //       "Act as a Movie Recommendation system and suggest some movies for the query:" +
-  //       searchText.current.value +
-  //       " only give me names of 5 movies, comma separated like the example result ahead. Example Result: Gadar,Sholay,Don,Golmaal,Koi Mil Gaya";
-  //     const gptResults = await openai.chat.completions.create({
-  //       model: "gpt-3.5-turbo",
-  //       messages: [{ role: "developer", content: gptQuery }],
-  //     });
-  //     if(!gptResults.choices) {
-  //         //TODO: Write Error Hangling
-  //         }
-  //     const gptMovies = gptResults.choices?.[0]?.message.content.split(",");
-  //     console.log(gptResults.choices?.[0]?.message.content);
+  if(!gptResults) {
+    // Error handling
+      console.log("error")
+  }
+  
+  const gptMovies = gptResults.text.split(",");
+  //console.log(gptMovies)
 
-  //     // For each movie i will search TMDB API
+  // For each movie i will search TMDB API
 
-  //     const promiseArray = gptMovies.map(movie => searchMovieTMDB(movie));
+  const promiseArray = gptMovies.map(movie => searchMovieTMDB(movie));
+  
+  const tmdbResults = await Promise.all(promiseArray);
+//  console.log(tmdbResults)
 
-  //     const tmdbResults = await  Promise.all(promiseArray);
-  //     console.log(tmdbResults)
-
-  //   };
-  // search movie in TMDB
-
-    
-  const searchMovieTMDB = async () => {
-    const data =  await fetch(
+  dispatch(addGptMovieResult({movieNames:gptMovies,movieResults:tmdbResults}));
+}
+  //search movie in TMDB
+  const searchMovieTMDB = async (movie) => {
+    const data = await fetch(
       "https://api.themoviedb.org/3/search/movie?query=" +
-        searchText.current.value +
+        movie +
         "&include_adult=false&language=en-US&page=1",
       API_OPTIONS
     );
 
     const json = await data.json();
-   // console.log(json.results);
-    dispatch(addGptMovieResult(json.results))
-
+     return json.results;
+    
   };
 
   return (
@@ -64,7 +72,7 @@ const GptSearchBar = () => {
         />
         <button
           className=" col-span-3 m-3 sm:m-2  p-2 px-4 bg-red-700 text-white rounded-lg"
-          onClick={searchMovieTMDB}
+          onClick={handleGptSearchClick}
         >
           {lang[langKey]?.search}
         </button>

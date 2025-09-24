@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "netflixgpt-7735f"
-  }
+    "default": "netflix-gpt-test-version"
+  },
+  "targets": {},
+  "etags": {}
 }
