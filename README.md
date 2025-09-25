@@ -1,15 +1,15 @@
 # 🎬 Netflix GPT
 
-Netflix GPT is a responsive React web app for exploring movies in a Netflix-style interface. It integrates TMDB API for movie data and OpenAI GPT API for AI-powered movie suggestions.
+Netflix GPT is a responsive React web app for exploring movies in a Netflix-style interface. It integrates TMDB API for movie data and Gemini API for AI-powered movie suggestions.
 
 ---
 
 ## 🚀 Features
 - ✅ Authentication – Login, Sign-up, and profile update with Firebase  
 - 🎬 Browse Page – Movie trailers, titles, descriptions, and movie lists  
-- 🔍 GPT Search – AI-powered movie suggestions  
+- 🔍 Gemini AI Search – AI-powered movie suggestions  
 - 📱 Responsive Design – Works across devices using TailwindCSS  
-- ⚡ State Management – Redux slices for user, movies, and GPT suggestions  
+- ⚡ State Management – Redux slices for user, movies, and AI suggestions  
 
 ---
 
@@ -17,10 +17,8 @@ Netflix GPT is a responsive React web app for exploring movies in a Netflix-styl
 - **Frontend:** React.js, Tailwind CSS  
 - **State Management:** Redux (`userSlice`, `movieSlice`, `gptSlice`)  
 - **Backend & Auth:** Firebase Authentication  
-- **APIs:** TMDB, OpenAI GPT  
+- **APIs:** TMDB, Gemini AI API  
 - **Deployment:** Production-ready React app  
-
----
 
 ## ⚙️ Installation & Setup
 
@@ -50,9 +48,9 @@ npm run build
    . Register on TMDB  and create an app
    . Get your API Key
 
-2. OpenAI GPT API
+2. Gemini API
 
-  . Get your API key from OpenAI
+  . Get your API key from Gemini
 
 3. Add environment variables
 
@@ -60,7 +58,7 @@ npm run build
 
    REACT_APP_TMDB_API_KEY=your_tmdb_api_key
 
-   REACT_APP_OPENAI_API_KEY=your_openai_api_key
+   REACT_APP_GEMINI_API_KEY=your_gemini_api_key  
 
 🤝 Contributing
 
