@@ -1,4 +1,4 @@
-import { useRef, useEffect ,useState} from "react";
+import { useRef,useState} from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
@@ -28,6 +28,7 @@ const GptSearchBar = () => {
       model: "gemini-2.5-flash",
       contents: gptQuery,
     });
+
     // console.log(gptResults.text);
 
     if (!gptResults) {
@@ -47,13 +48,14 @@ const GptSearchBar = () => {
     );
     setIsLoading(false)
   };
-  //search movie in TMDB
+  
+  //  search movie in TMDB
   const searchMovieTMDB = async (movie) => {
     const data = await fetch(
       "https://api.themoviedb.org/3/search/movie?query=" +
         movie +
         "&include_adult=false&language=en-US&page=1",
-      API_OPTIONS
+         API_OPTIONS
     );
 
     const json = await data.json();
