@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 const GptMovieSuggestions = () => {
   const { movieResults, movieNames } = useSelector((store) => store.gpt);
- console.log(movieResults)
- console.log(movieNames)
-
+ 
   if (!movieNames?.length || !movieResults?.length) return null;
 
   return (

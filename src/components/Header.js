@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
 import { removeGptMovies, toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
+
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
@@ -81,7 +82,7 @@ const Header = () => {
             className=" py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearch}
           >
-            {showGpt ? "HomePage" : "GPT Search"}
+            {showGpt ? "HomePage" : "AI Search"}
           </button>
           <img
             className="hidden md:block w-10 h-10 mr-2"

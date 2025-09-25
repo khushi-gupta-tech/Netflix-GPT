@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect ,useState} from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
@@ -10,9 +10,13 @@ const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
 
-  const handleGptSearchClick = async () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    // make an API call to GPT API and get Movie results
+  const handleGptSearchClick = async () => {
+    setIsLoading(true);
+    setError(null);
+
     const gptQuery =
       "Act as a Movie Recommendation system and suggest some movies for the query:" +
       searchText.current.value +
@@ -24,26 +28,25 @@ const GptSearchBar = () => {
       model: "gemini-2.5-flash",
       contents: gptQuery,
     });
-   // console.log(gptResults.text);
-  
+    // console.log(gptResults.text);
 
-  if(!gptResults) {
-    // Error handling
-      console.log("error")
-  }
-  
-  const gptMovies = gptResults.text.split(",");
-  //console.log(gptMovies)
+    if (!gptResults) {
+       setError("Couldn't get recommendations. Please try another search")
+    }
 
-  // For each movie i will search TMDB API
+    const gptMovies = gptResults.text.split(",");
 
-  const promiseArray = gptMovies.map(movie => searchMovieTMDB(movie));
-  
-  const tmdbResults = await Promise.all(promiseArray);
-//  console.log(tmdbResults)
+    // For each movie i will search TMDB API
 
-  dispatch(addGptMovieResult({movieNames:gptMovies,movieResults:tmdbResults}));
-}
+    const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
+
+    const tmdbResults = await Promise.all(promiseArray);
+
+    dispatch(
+      addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
+    );
+    setIsLoading(false)
+  };
   //search movie in TMDB
   const searchMovieTMDB = async (movie) => {
     const data = await fetch(
@@ -54,8 +57,7 @@ const GptSearchBar = () => {
     );
 
     const json = await data.json();
-     return json.results;
-    
+    return json.results;
   };
 
   return (
@@ -71,11 +73,13 @@ const GptSearchBar = () => {
           placeholder={lang[langKey]?.gptSearchPlaceholder}
         />
         <button
-          className=" col-span-3 m-3 sm:m-2  p-2 px-4 bg-red-700 text-white rounded-lg"
+          className=" col-span-3 m-3 sm:m-2  p-2 px-4 bg-red-700 text-white rounded-lg w-28"
           onClick={handleGptSearchClick}
+          disabled={isLoading}
         >
-          {lang[langKey]?.search}
+          {isLoading? "Searching..." : lang[langKey]?.search}
         </button>
+        {error && <p className="text-red-500 text-lg mt-2 bg-black p-2 rounded-md">{error}</p>}
       </form>
     </div>
   );
